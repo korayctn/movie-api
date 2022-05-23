@@ -1,4 +1,6 @@
 const express = require('express');
+const { default: mongoose, Schema, SchemaTypes } = require('mongoose');
+const Director = require('../models/Director');
 const router = express.Router();
 const Movie = require('../models/Movie');
 
@@ -100,15 +102,9 @@ router.delete('/:movieId',(req,res,next)=>{
   })
 })
 router.post('/', (req,res)=>{
-  const {title,imdb_score,category,country,year} = req.body;
 
-  const movie = new Movie({
-    title:title,
-    imdb_score:imdb_score,
-    category:category,
-    country:country,
-    year:year
-  })
+  const movie = new Movie(req.body);
+  
   movie.save((err,data)=>{
     if(err){
       res.json(err)
