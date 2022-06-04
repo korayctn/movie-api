@@ -1,21 +1,18 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const should = chai.should();
-
 const server = require('../app');
+const should = chai.should();
 
 chai.use(chaiHttp);
 
-
-describe('Nodejs Server', () =>{
-    it('(GET/) anasayfa döndürür.',(done)=>{
-        done();
-    })
-
-    it('(GET/) movies endpoint.',(done)=>{
-        chai.request(server).get('/').end((err,res)=>{
+describe('Node Server',()=>{
+    it('(GET /) anasayfa döndürür',(done)=>{
+        chai.request(server)
+        .get('/')
+        .end((err,res)=>{
             res.should.have.status(200);
             done();
         })
     })
 })
+
