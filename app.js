@@ -11,7 +11,7 @@ const indexRouter = require('./routes/index');
 const movieRouter = require('./routes/movie');
 const directorRouter = require('./routes/director');
 const app = express();
-
+mongoose.connect('mongodb+srv://koray:Koray1245@movie-api.ykj2a.mongodb.net/?retryWrites=true&w=majority');
 
 // view engine setup
 
