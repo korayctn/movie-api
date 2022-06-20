@@ -84,14 +84,14 @@ router.get('/:movieId',(req,res,next)=>{
 
 
 router.put('/:movieId',(req,res,next)=>{
-  const promise = Movie.findByIdAndUpdate(req.params.movieId,req.body,{new:true});
+  const promise = Movie.findByIdAndUpdate(req.params.movieId,req.body);
 
   promise.then((data)=>{
     if(!data){
       next({message:"The movie was not found",code:404})
     }
     else{
-      res.json({movieName:data.title,});
+      res.json(data);
     }
   }).catch((err)=>{
     res.json(err);
@@ -107,7 +107,7 @@ router.delete('/:movieId',(req,res,next)=>{
       next({message:"The movie was not found",code:404});
     }
     else{
-      res.json(data)
+      res.json({status:1})
     }
   }).catch((err)=>{
     res.json(err);

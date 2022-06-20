@@ -24,7 +24,7 @@ describe('/api/movies tests', ()=>{
             chai.request(server).get('/api/movies')
             .set('x-access-token',token)
             .end((err,res)=>{
-                res.should.have.status(200)
+                res.should.have.status(200);
                 res.body.should.be.a('array');
                 done();
             })
@@ -56,7 +56,7 @@ describe('/api/movies tests', ()=>{
             })
         })
     })
-    describe('/api/movies/movie_id',()=>{
+    describe('/GET api/movies/movie_id',()=>{
         it('it should return a movie from id',(done)=>{
             chai.request(server)
             .get('/api/movies/' + movieId)
@@ -72,4 +72,19 @@ describe('/api/movies tests', ()=>{
             })
         })
     })
+    describe('/DELETE',()=>{
+        it('it should delete the movie given by user',(done)=>{
+            chai.request(server)
+            .delete('/api/movies/'+ movieId)
+            .set('x-access-token',token)
+            .end((err,res)=>{
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('status').eql(1);
+                done();
+            })
+        })
+    })
+
+    
 })
