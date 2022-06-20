@@ -4,8 +4,8 @@
   "private": true,
   "engines":{"node": "12.11.1"},
   "scripts": {
-    "start": "node ./bin/www",
-    "start:dev": "nodemon ./bin/www",
+    "start": "node app.js",
+    "start:dev": "nodemon app.js",
     "test" : "mocha --exit"
   },
   "dependencies": {

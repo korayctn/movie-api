@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const db = require('./helper/db')();
 const config = require('./config');
 const verifyToken = require('./middleware/verify-token');
 const indexRouter = require('./routes/index');
